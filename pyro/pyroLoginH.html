@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyro Gamificação - Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary: #8B5FBF;
+            --primary-dark: #6A3093;
+            --primary-light: #A579D2;
+            --accent: #FF6B8B;
+            --text: #333333;
+            --text-light: #777777;
+            --background: #F8F9FA;
+            --white: #FFFFFF;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        body {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            display: flex;
+            width: 100%;
+            max-width: 1000px;
+            background-color: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .left-panel {
+            flex: 1;
+            background: linear-gradient(rgba(107, 48, 147, 0.85), rgba(107, 48, 147, 0.9)), url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            color: var(--white);
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .left-panel::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 100%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+
+        .left-panel h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .left-panel p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            position: relative;
+            z-index: 1;
+        }
+
+        .right-panel {
+            flex: 1;
+            padding: 50px 40px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 15px;
+            box-shadow: 0 5px 15px rgba(107, 48, 147, 0.3);
+        }
+
+        .logo-icon i {
+            color: white;
+            font-size: 24px;
+        }
+
+        .logo-text h2 {
+            color: var(--primary);
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .logo-text p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: var(--text);
+            font-size: 0.9rem;
+        }
+
+        .input-with-icon {
+            position: relative;
+        }
+
+        .input-with-icon i {
+            position: absolute;
+            left: 15px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--primary);
+            font-size: 18px;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 15px 15px 15px 50px;
+            border: 2px solid #E1E5EE;
+            border-radius: 12px;
+            font-size: 1rem;
+            transition: all 0.3s;
+            background-color: #F8F9FA;
+        }
+
+        .form-group input:focus {
+            border-color: var(--primary);
+            outline: none;
+            background-color: white;
+            box-shadow: 0 0 0 3px rgba(139, 95, 191, 0.1);
+        }
+
+        .login-options {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 25px;
+            font-size: 0.9rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+        }
+
+        .remember-me input {
+            margin-right: 8px;
+            accent-color: var(--primary);
+        }
+
+        .forgot-password {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .forgot-password:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 15px;
+            background: linear-gradient(to right, var(--primary), var(--primary-dark));
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(107, 48, 147, 0.3);
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(107, 48, 147, 0.4);
+        }
+
+        .error-message {
+            color: #e74c3c;
+            font-size: 0.85rem;
+            margin-top: 5px;
+            display: none;
+        }
+
+        .switch-login {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        .switch-login a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+        }
+
+        .switch-login a:hover {
+            color: var(--primary-dark);
+            text-decoration: underline;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 30px;
+            border-radius: 15px;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            animation: modalFadeIn 0.3s ease-out;
+        }
+
+        @keyframes modalFadeIn {
+            from { opacity: 0; transform: scale(0.9); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .modal h3 {
+            margin-bottom: 15px;
+            color: var(--primary);
+            font-size: 1.5rem;
+        }
+
+        .close-modal {
+            float: right;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-light);
+            transition: color 0.3s;
+        }
+
+        .close-modal:hover {
+            color: var(--primary);
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .left-panel {
+                padding: 40px 30px;
+            }
+            
+            .right-panel {
+                padding: 40px 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>Bem-vindo ao Pyro Gamificação</h1>
+            <p>Acesse suas tarefas, veja seu progresso e participe das atividades do seu time. Faça login para continuar sua jornada educacional.</p>
+        </div>
+        <div class="right-panel">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>Pyro Gamificação</h2>
+                    <p>Faça login na sua conta e comece seu planejamento de sprint</p>
+                </div>
+            </div>
+   
+                <div class="form-group">
+                    <label for="loginField" id="loginLabel">RA</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="loginField" placeholder="Digite seu RA" required>
+                    </div>
+                    <div class="error-message" id="loginError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <div class="login-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password" id="forgotPassword">Esqueci minha senha</a>
+                </div>
+                
+                <a href="pyrolobbyH.html">
+                <button type="submit" class="btn">Entrar</button>
+                </a>
+          
+            
+            <div class="switch-login">
+                <p>Prefere usar e-mail? <a href="#" id="switchLogin">Fazer login com e-mail</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para recuperação de senha -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Recuperar Senha</h3>
+            <p>Digite seu RA ou e-mail para receber instruções de recuperação:</p>
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="recoveryField" placeholder="RA ou e-mail">
+                </div>
+                <div class="error-message" id="recoveryError"></div>
+            </div>
+            <button class="btn" id="sendRecovery">Enviar instruções</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const loginField = document.getElementById('loginField');
+            const loginLabel = document.getElementById('loginLabel');
+            const passwordField = document.getElementById('password');
+            const loginError = document.getElementById('loginError');
+            const passwordError = document.getElementById('passwordError');
+            const switchLogin = document.getElementById('switchLogin');
+            const forgotPassword = document.getElementById('forgotPassword');
+            const passwordModal = document.getElementById('passwordModal');
+            const closeModal = document.getElementById('closeModal');
+            const sendRecovery = document.getElementById('sendRecovery');
+            const recoveryField = document.getElementById('recoveryField');
+            const recoveryError = document.getElementById('recoveryError');
+            
+            let isEmailLogin = false;
+            
+            // Alternar entre RA e e-mail
+            switchLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                isEmailLogin = !isEmailLogin;
+                
+                if (isEmailLogin) {
+                    loginLabel.textContent = 'E-mail';
+                    loginField.placeholder = 'Digite seu e-mail';
+                    switchLogin.textContent = 'Fazer login com RA';
+                } else {
+                    loginLabel.textContent = 'RA';
+                    loginField.placeholder = 'Digite seu RA';
+                    switchLogin.textContent = 'Fazer login com e-mail';
+                }
+            });
+            
+            // Validação do formulário de login
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Limpar mensagens de erro
+                loginError.style.display = 'none';
+                passwordError.style.display = 'none';
+                
+                // Validar campo de login
+                if (!loginField.value.trim()) {
+                    loginError.textContent = isEmailLogin ? 'E-mail é obrigatório' : 'RA é obrigatório';
+                    loginError.style.display = 'block';
+                    isValid = false;
+                } else if (isEmailLogin && !isValidEmail(loginField.value)) {
+                    loginError.textContent = 'Formato de e-mail inválido';
+                    loginError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validar senha
+                if (!passwordField.value) {
+                    passwordError.textContent = 'Senha é obrigatória';
+                    passwordError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Se válido, simular envio
+                if (isValid) {
+                    // Simulação de login bem-sucedido
+                    alert('Login realizado com sucesso! Redirecionando...');
+                    // Em um sistema real, aqui seria feita a autenticação com o backend
+                }
+            });
+            
+            // Abrir modal de recuperação de senha
+            forgotPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                passwordModal.style.display = 'flex';
+            });
+            
+            // Fechar modal
+            closeModal.addEventListener('click', function() {
+                passwordModal.style.display = 'none';
+            });
+            
+            // Fechar modal ao clicar fora dele
+            window.addEventListener('click', function(e) {
+                if (e.target === passwordModal) {
+                    passwordModal.style.display = 'none';
+                }
+            });
+            
+            // Enviar recuperação de senha
+            sendRecovery.addEventListener('click', function() {
+                recoveryError.style.display = 'none';
+                
+                if (!recoveryField.value.trim()) {
+                    recoveryError.textContent = 'Campo obrigatório';
+                    recoveryError.style.display = 'block';
+                    return;
+                }
+                
+                // Simulação de envio de recuperação
+                alert('Instruções de recuperação enviadas para o e-mail cadastrado!');
+                passwordModal.style.display = 'none';
+                recoveryField.value = '';
+            });
+            
+            // Função auxiliar para validar e-mail
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        });
+    </script>
+</body>
+</html>
+<script src="pyroMain.js"></script>
