@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyro Gamificação - Lobby</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/style/pyrolobby.css">
+
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Painel Principal</h1>
+            </div>
+            <div class="header-right">
+                <a href="pyroperfilH.html" class="user-profile" style="text-decoration: none; cursor: pointer;">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-info">
+                        <div class="user-name">João Silva</div>
+                        <div class="user-role">Desenvolvedor</div>
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../assets/img/pyro.png" alt="Pyro logo" class="logo-img">
+                </div>
+                <div class="logo-text">
+                    <h2>Pyro Gamificação</h2>
+                    <p>Planejamento de Sprint</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="pyrolobbyH.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Painel Principal</span>
+                </a>
+
+                <a href="pyroscrum.html" class="nav-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Planejamento de Sprint</span>
+                </a>
+
+                <a href="pyroperfilH.html" class="nav-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Perfil e Conquistas</span>
+                </a>
+
+                <a href="pyronotificacaoH.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Notificação</span>
+                </a>
+            </nav>
+
+            <a href="pyroconfig.html" class="pyro">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Welcome Card -->
+            <section class="welcome-card">
+                <div class="welcome-text">
+                    <h2>Olá, João! 👋</h2>
+                    <p>Bem-vindo de volta ao seu painel de gamificação. Continue evoluindo!</p>
+                </div>
+                <div class="user-stats">
+                    <div class="stat">
+                        <div class="stat-value">15</div>
+                        <div class="stat-label">Nível</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">1,250</div>
+                        <div class="stat-label">XP</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-value">8</div>
+                        <div class="stat-label">Badges</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Tasks Section -->
+            <section class="tasks-section">
+                <div class="section-header">
+                    <h2>Minhas Tarefas de Hoje</h2>
+                    <a href="#" class="view-all">Ver todas</a>
+                </div>
+                <div class="tasks-list">
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title">Implementar sistema de autenticação</div>
+                            <div class="task-meta">
+                                <span><i class="far fa-clock"></i> 3 horas</span>
+                                <span class="task-priority priority-high">Alta</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox" checked>
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title">Revisar documentação da API</div>
+                            <div class="task-meta">
+                                <span><i class="far fa-clock"></i> 1 hora</span>
+                                <span class="task-priority priority-medium">Média</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title">Participar da daily meeting</div>
+                            <div class="task-meta">
+                                <span><i class="far fa-clock"></i> 30 min</span>
+                                <span class="task-priority priority-low">Baixa</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="task-item">
+                        <div class="task-checkbox">
+                            <input type="checkbox">
+                        </div>
+                        <div class="task-content">
+                            <div class="task-title">Criar testes unitários</div>
+                            <div class="task-meta">
+                                <span><i class="far fa-clock"></i> 2 horas</span>
+                                <span class="task-priority priority-medium">Média</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Right Sidebar -->
+            <div class="sidebar-right">
+                <!-- Sprint Card -->
+                <section class="sprint-card">
+                    <div class="sprint-header">
+                        <h3 class="sprint-title">Sprint Atual</h3>
+                        <div class="sprint-days">5 dias restantes</div>
+                    </div>
+                    <div class="sprint-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <div class="progress-text">
+                            <span>Progresso</span>
+                            <span>65%</span>
+                        </div>
+                    </div>
+                    <div class="sprint-tasks">
+                        <div class="sprint-task-item">
+                            <div class="sprint-task-value">12</div>
+                            <div class="sprint-task-label">Tarefas</div>
+                        </div>
+                        <div class="sprint-task-item">
+                            <div class="sprint-task-value">8</div>
+                            <div class="sprint-task-label">Concluídas</div>
+                        </div>
+                        <div class="sprint-task-item">
+                            <div class="sprint-task-value">4</div>
+                            <div class="sprint-task-label">Pendentes</div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Notifications Card -->
+                <section class="notifications-card">
+                    <div class="section-header">
+                        <h2>Notificações</h2>
+                    </div>
+                    <div class="notifications-list">
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-bullhorn"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Daily Meeting</h4>
+                                <p>Reunião diária em 15 minutos</p>
+                                <div class="notification-time">Há 10 min</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Nova Conquista!</h4>
+                                <p>Você desbloqueou o badge "Produtividade Máxima"</p>
+                                <div class="notification-time">Há 1 hora</div>
+                            </div>
+                        </div>
+                        <div class="notification-item">
+                            <div class="notification-icon">
+                                <i class="fas fa-user-check"></i>
+                            </div>
+                            <div class="notification-content">
+                                <h4>Tarefa Revisada</h4>
+                                <p>Scrum Master revisou sua tarefa #45</p>
+                                <div class="notification-time">Há 3 horas</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Badges Card -->
+                <section class="badges-card">
+                    <div class="section-header">
+                        <h2>Minhas Conquistas</h2>
+                    </div>
+                    <div class="badges-container">
+                        <div class="badge">
+                            <i class="fas fa-rocket"></i>
+                            <div class="badge-tooltip">Iniciante</div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-bolt"></i>
+                            <div class="badge-tooltip">Produtivo</div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-code"></i>
+                            <div class="badge-tooltip">Desenvolvedor</div>
+                        </div>
+                        <div class="badge">
+                            <i class="fas fa-check-double"></i>
+                            <div class="badge-tooltip">Concluído</div>
+                        </div>
+                        <div class="badge locked">
+                            <i class="fas fa-crown"></i>
+                            <div class="badge-tooltip">Mestre (bloqueado)</div>
+                        </div>
+                        <div class="badge locked">
+                            <i class="fas fa-infinity"></i>
+                            <div class="badge-tooltip">Lendário (bloqueado)</div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Simulação de interatividade
+        document.addEventListener('DOMContentLoaded', function () {
+            // Marcar tarefas como concluídas
+            const checkboxes = document.querySelectorAll('.task-checkbox input');
+            checkboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', function () {
+                    const taskItem = this.closest('.task-item');
+                    if (this.checked) {
+                        taskItem.style.opacity = '0.7';
+                        taskItem.style.textDecoration = 'line-through';
+                    } else {
+                        taskItem.style.opacity = '1';
+                        taskItem.style.textDecoration = 'none';
+                    }
+                });
+            });
+
+            // Navegação na sidebar
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function () {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

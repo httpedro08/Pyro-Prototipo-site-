@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyro Scrum - Gestão de Tarefas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/style/pyroscrum.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Gestão de Tarefas de Sprint</h1>
+            </div>
+            <a href="pyroperfilH.html" class="user-profile" style="text-decoration: none; cursor: pointer;">
+                <div class="user-avatar">SM</div>
+                <div class="user-info">
+                    <div class="user-name">Scrum Master</div>
+                    <div class="user-role">Sprint #12</div>
+                </div>
+            </a>
+        </header>
+
+        <!-- Sidebar -->
+       <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../assets/img/pyro.png" alt="Pyro" class="logo-img">
+                </div>
+                <div class="logo-text">
+                    <h2>Pyro Gamificação</h2>
+                    <p>Planejamento de Sprint</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="pyrolobbyH.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Painel Principal</span>
+                </a>
+
+                <a href="pyroscrum.html" class="nav-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Planejamento de Sprint</span>
+                </a>
+
+                <a href="pyroperfilH.html" class="nav-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Perfil e Conquistas</span>
+                </a>
+
+                <a href="pyronotificacaoH.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Notificação</span>
+                </a>
+            </nav>
+
+            <a href="pyroconfig.html" class="pyro">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Sprint Info -->
+            <div class="sprint-info">
+                <div class="sprint-details">
+                    <h3>Sprint #12 - Dashboard e Relatórios</h3>
+                    <div class="sprint-dates">01 Jun - 14 Jun 2023</div>
+                </div>
+                <div class="sprint-progress">
+                    <div class="progress-text">65% Concluído</div>
+                    <div class="progress-bar">
+                        <div class="progress-fill" style="width: 65%"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2 class="page-title">Quadro de Tarefas</h2>
+                <div class="page-actions">
+                    <button class="btn btn-secondary" id="filterTasksBtn">
+                        <i class="fas fa-filter"></i> Filtrar Tarefas
+                    </button>
+                    <button class="btn btn-primary" id="addTaskBtn">
+                        <i class="fas fa-plus"></i> Nova Tarefa
+                    </button>
+                </div>
+            </div>
+
+            <!-- Task Board -->
+            <div class="task-board">
+                <div class="board-column">
+                    <div class="column-header">
+                        <div class="column-title">Backlog</div>
+                        <div class="task-count" id="backlog-count">2</div>
+                    </div>
+                    <div class="task-list" id="backlog-column">
+                        <!-- Backlog tasks will be populated here -->
+                    </div>
+                </div>
+                <div class="board-column">
+                    <div class="column-header">
+                        <div class="column-title">Para Fazer</div>
+                        <div class="task-count" id="todo-count">4</div>
+                    </div>
+                    <div class="task-list" id="todo-column">
+                        <!-- Todo tasks will be populated here -->
+                    </div>
+                </div>
+                <div class="board-column">
+                    <div class="column-header">
+                        <div class="column-title">Em Progresso</div>
+                        <div class="task-count" id="progress-count">3</div>
+                    </div>
+                    <div class="task-list" id="progress-column">
+                        <!-- In progress tasks will be populated here -->
+                    </div>
+                </div>
+                <div class="board-column">
+                    <div class="column-header">
+                        <div class="column-title">Concluído</div>
+                        <div class="task-count" id="done-count">5</div>
+                    </div>
+                    <div class="task-list" id="done-column">
+                        <!-- Done tasks will be populated here -->
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Add Task Modal -->
+    <div class="modal" id="taskModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="taskModalTitle">Nova Tarefa</h3>
+                <span class="close-modal" id="closeTaskModal">&times;</span>
+            </div>
+            <form id="taskForm">
+                <input type="hidden" id="taskId">
+
+                <div class="form-group">
+                    <label for="taskTitle">Título da Tarefa</label>
+                    <input type="text" id="taskTitle" placeholder="Ex: Implementar gráfico de burndown" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="taskDescription">Descrição</label>
+                    <textarea id="taskDescription" rows="3" placeholder="Descreva os detalhes da tarefa..."></textarea>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskAssignee">Responsável</label>
+                        <select id="taskAssignee" required>
+                            <option value="">Selecione um membro</option>
+                            <option value="JS">João Silva</option>
+                            <option value="MS">Maria Santos</option>
+                            <option value="PC">Pedro Costa</option>
+                            <option value="AO">Ana Oliveira</option>
+                            <option value="CL">Carlos Lima</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskPriority">Prioridade</label>
+                        <select id="taskPriority" required>
+                            <option value="high">Alta</option>
+                            <option value="medium">Média</option>
+                            <option value="low">Baixa</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="taskEstimate">Estimativa (dias)</label>
+                        <input type="number" id="taskEstimate" min="0.5" max="10" step="0.5" value="2" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="taskDeadline">Prazo</label>
+                        <input type="date" id="taskDeadline" required>
+                    </div>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn btn-secondary" id="cancelTask">Cancelar</button>
+                    <button type="submit" class="btn btn-primary" id="submitTask">Criar Tarefa</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // Sample tasks data
+        let tasks = [
+            {
+                id: 1,
+                title: "Implementar autenticação JWT",
+                description: "Criar sistema de autenticação com tokens JWT para segurança da API",
+                assignee: "JS",
+                priority: "high",
+                status: "todo",
+                estimate: 3,
+                deadline: "2023-06-10"
+            },
+            {
+                id: 2,
+                title: "Criar design do dashboard",
+                description: "Desenvolver interface do usuário para o dashboard principal",
+                assignee: "MS",
+                priority: "medium",
+                status: "progress",
+                estimate: 2,
+                deadline: "2023-06-08"
+            },
+            {
+                id: 3,
+                title: "Testes de integração API",
+                description: "Implementar testes de integração para todos os endpoints da API",
+                assignee: "PC",
+                priority: "medium",
+                status: "todo",
+                estimate: 4,
+                deadline: "2023-06-12"
+            },
+            {
+                id: 4,
+                title: "Configurar CI/CD pipeline",
+                description: "Automatizar processo de deploy com GitHub Actions",
+                assignee: "CL",
+                priority: "high",
+                status: "progress",
+                estimate: 3,
+                deadline: "2023-06-07"
+            },
+            {
+                id: 5,
+                title: "Desenvolver componente de calendário",
+                description: "Criar componente reutilizável de calendário para agendamentos",
+                assignee: "AO",
+                priority: "low",
+                status: "done",
+                estimate: 2,
+                deadline: "2023-06-05"
+            },
+            {
+                id: 6,
+                title: "Documentação da API",
+                description: "Criar documentação completa com exemplos de uso",
+                assignee: "JS",
+                priority: "medium",
+                status: "done",
+                estimate: 1,
+                deadline: "2023-06-03"
+            },
+            {
+                id: 7,
+                title: "Otimizar performance do banco",
+                description: "Analisar e otimizar queries para melhorar performance",
+                assignee: "CL",
+                priority: "medium",
+                status: "progress",
+                estimate: 2,
+                deadline: "2023-06-09"
+            },
+            {
+                id: 8,
+                title: "Implementar relatório de métricas",
+                description: "Criar relatório com métricas de produtividade da equipe",
+                assignee: "MS",
+                priority: "high",
+                status: "todo",
+                estimate: 3,
+                deadline: "2023-06-11"
+            },
+            {
+                id: 9,
+                title: "Configurar ambiente de staging",
+                description: "Preparar ambiente de staging para testes antes de produção",
+                assignee: "CL",
+                priority: "low",
+                status: "backlog",
+                estimate: 1,
+                deadline: "2023-06-14"
+            },
+            {
+                id: 10,
+                title: "Revisão de código",
+                description: "Revisar código dos componentes desenvolvidos na sprint",
+                assignee: "PC",
+                priority: "medium",
+                status: "done",
+                estimate: 1,
+                deadline: "2023-06-04"
+            },
+            {
+                id: 11,
+                title: "Implementar sistema de notificações",
+                description: "Criar sistema para notificar usuários sobre atualizações",
+                assignee: "AO",
+                priority: "medium",
+                status: "done",
+                estimate: 2,
+                deadline: "2023-06-06"
+            },
+            {
+                id: 12,
+                title: "Criar página de perfil do usuário",
+                description: "Desenvolver interface para edição de perfil de usuário",
+                assignee: "MS",
+                priority: "low",
+                status: "backlog",
+                estimate: 2,
+                deadline: "2023-06-13"
+            },
+            {
+                id: 13,
+                title: "Configurar monitoramento de erros",
+                description: "Implementar Sentry para captura e relatório de erros",
+                assignee: "JS",
+                priority: "high",
+                status: "todo",
+                estimate: 1,
+                deadline: "2023-06-07"
+            },
+            {
+                id: 14,
+                title: "Refatorar componentes antigos",
+                description: "Melhorar código legado para seguir novos padrões",
+                assignee: "AO",
+                priority: "low",
+                status: "done",
+                estimate: 2,
+                deadline: "2023-06-02"
+            }
+        ];
+
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize the application
+            renderTasks();
+            setupEventListeners();
+            setupNavigation();
+        });
+
+        function renderTasks() {
+            // Clear all columns
+            ['backlog', 'todo', 'progress', 'done'].forEach(status => {
+                const column = document.getElementById(`${status}-column`);
+                column.innerHTML = '';
+            });
+
+            // Count tasks per status
+            const taskCounts = {
+                backlog: 0,
+                todo: 0,
+                progress: 0,
+                done: 0
+            };
+
+            // Add tasks to their respective columns
+            tasks.forEach(task => {
+                const taskCard = document.createElement('div');
+                taskCard.className = `task-card ${task.priority}-priority`;
+                taskCard.draggable = true;
+                taskCard.dataset.taskId = task.id;
+
+                taskCard.innerHTML = `
+                    <div class="task-header">
+                        <div class="task-id">#T-${task.id.toString().padStart(3, '0')}</div>
+                        <div class="task-priority priority-${task.priority}">
+                            ${task.priority === 'high' ? 'Alta' : task.priority === 'medium' ? 'Média' : 'Baixa'}
+                        </div>
+                    </div>
+                    <div class="task-title">${task.title}</div>
+                    <div class="task-description">${task.description}</div>
+                    <div class="task-meta">
+                        <div class="task-estimate">${task.estimate}d</div>
+                        <div class="task-assignee">
+                            <div class="assignee-avatar">${task.assignee}</div>
+                            <span>${getAssigneeName(task.assignee)}</span>
+                        </div>
+                    </div>
+                    <div class="task-actions">
+                        <button class="task-action-btn edit-task" data-id="${task.id}">
+                            <i class="fas fa-edit"></i> Editar
+                        </button>
+                        <button class="task-action-btn delete-task" data-id="${task.id}">
+                            <i class="fas fa-trash"></i> Excluir
+                        </button>
+                    </div>
+                `;
+
+                const targetColumn = document.getElementById(`${task.status}-column`);
+                if (targetColumn) {
+                    targetColumn.appendChild(taskCard);
+                    taskCounts[task.status]++;
+                }
+            });
+
+            // Update task counts
+            Object.keys(taskCounts).forEach(status => {
+                document.getElementById(`${status}-count`).textContent = taskCounts[status];
+            });
+
+            // Add event listeners to action buttons
+            document.querySelectorAll('.edit-task').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const taskId = parseInt(e.target.closest('button').dataset.id);
+                    editTask(taskId);
+                });
+            });
+
+            document.querySelectorAll('.delete-task').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    const taskId = parseInt(e.target.closest('button').dataset.id);
+                    deleteTask(taskId);
+                });
+            });
+        }
+
+        function getAssigneeName(initials) {
+            const assignees = {
+                'JS': 'João Silva',
+                'MS': 'Maria Santos',
+                'PC': 'Pedro Costa',
+                'AO': 'Ana Oliveira',
+                'CL': 'Carlos Lima'
+            };
+            return assignees[initials] || initials;
+        }
+
+        function setupEventListeners() {
+            // Add task modal
+            const addTaskBtn = document.getElementById('addTaskBtn');
+            const taskModal = document.getElementById('taskModal');
+            const closeTaskModal = document.getElementById('closeTaskModal');
+            const cancelTask = document.getElementById('cancelTask');
+            const taskForm = document.getElementById('taskForm');
+
+            addTaskBtn.addEventListener('click', function () {
+                taskModal.style.display = 'flex';
+                document.getElementById('taskForm').reset();
+                document.getElementById('taskModalTitle').textContent = 'Nova Tarefa';
+                document.getElementById('submitTask').textContent = 'Criar Tarefa';
+                // Remove hidden task ID field if it exists
+                const taskIdField = document.getElementById('taskId');
+                if (taskIdField) taskIdField.remove();
+            });
+
+            [closeTaskModal, cancelTask].forEach(btn => {
+                btn.addEventListener('click', function () {
+                    taskModal.style.display = 'none';
+                    taskForm.reset();
+                    // Remove hidden task ID field if it exists
+                    const taskIdField = document.getElementById('taskId');
+                    if (taskIdField) taskIdField.remove();
+                });
+            });
+
+            taskForm.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const taskId = document.getElementById('taskId') ? parseInt(document.getElementById('taskId').value) : null;
+
+                if (taskId) {
+                    // Update existing task
+                    const taskIndex = tasks.findIndex(t => t.id === taskId);
+                    if (taskIndex !== -1) {
+                        tasks[taskIndex] = {
+                            ...tasks[taskIndex],
+                            title: document.getElementById('taskTitle').value,
+                            description: document.getElementById('taskDescription').value,
+                            assignee: document.getElementById('taskAssignee').value,
+                            priority: document.getElementById('taskPriority').value,
+                            estimate: parseFloat(document.getElementById('taskEstimate').value),
+                            deadline: document.getElementById('taskDeadline').value
+                        };
+                    }
+                } else {
+                    // Create new task
+                    const newTask = {
+                        id: tasks.length > 0 ? Math.max(...tasks.map(t => t.id)) + 1 : 1,
+                        title: document.getElementById('taskTitle').value,
+                        description: document.getElementById('taskDescription').value,
+                        assignee: document.getElementById('taskAssignee').value,
+                        priority: document.getElementById('taskPriority').value,
+                        status: "todo",
+                        estimate: parseFloat(document.getElementById('taskEstimate').value),
+                        deadline: document.getElementById('taskDeadline').value
+                    };
+
+                    tasks.push(newTask);
+                }
+
+                renderTasks();
+                taskModal.style.display = 'none';
+                taskForm.reset();
+
+                // Remove hidden task ID field if it exists
+                const taskIdField = document.getElementById('taskId');
+                if (taskIdField) taskIdField.remove();
+
+                // Show success notification
+                alert(`Tarefa ${taskId ? 'atualizada' : 'criada'} com sucesso!`);
+            });
+
+            // Drag and drop for tasks
+            setupDragAndDrop();
+        }
+
+        function setupNavigation() {
+            // Navigation items
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.addEventListener('click', function () {
+                    // Remove active class from all items
+                    document.querySelectorAll('.nav-item').forEach(nav => {
+                        nav.classList.remove('active');
+                    });
+                    // Add active class to clicked item
+                    this.classList.add('active');
+
+                    // Here you would typically navigate to different pages
+                    // For this demo, we'll just show an alert
+                    const pageName = this.querySelector('span').textContent;
+                    if (pageName !== 'Quadro de Tarefas') {
+                        alert(`Navegando para: ${pageName}`);
+                    }
+                });
+            });
+        }
+
+        function editTask(taskId) {
+            const task = tasks.find(t => t.id === taskId);
+            if (!task) return;
+
+            // Set form values
+            document.getElementById('taskTitle').value = task.title;
+            document.getElementById('taskDescription').value = task.description;
+            document.getElementById('taskAssignee').value = task.assignee;
+            document.getElementById('taskPriority').value = task.priority;
+            document.getElementById('taskEstimate').value = task.estimate;
+            document.getElementById('taskDeadline').value = task.deadline;
+
+            // Add hidden field for task ID
+            if (!document.getElementById('taskId')) {
+                const hiddenInput = document.createElement('input');
+                hiddenInput.type = 'hidden';
+                hiddenInput.id = 'taskId';
+                hiddenInput.name = 'taskId';
+                document.getElementById('taskForm').appendChild(hiddenInput);
+            }
+            document.getElementById('taskId').value = taskId;
+
+            // Update modal title and button
+            document.getElementById('taskModalTitle').textContent = 'Editar Tarefa';
+            document.getElementById('submitTask').textContent = 'Atualizar Tarefa';
+
+            // Show modal
+            document.getElementById('taskModal').style.display = 'flex';
+        }
+
+        function deleteTask(taskId) {
+            if (confirm('Tem certeza que deseja excluir esta tarefa?')) {
+                tasks = tasks.filter(t => t.id !== taskId);
+                renderTasks();
+                alert('Tarefa excluída com sucesso!');
+            }
+        }
+
+        function setupDragAndDrop() {
+            let draggedTask = null;
+
+            document.addEventListener('dragstart', function (e) {
+                if (e.target.classList.contains('task-card')) {
+                    draggedTask = e.target;
+                    setTimeout(() => {
+                        e.target.style.opacity = '0.5';
+                    }, 0);
+                }
+            });
+
+            document.addEventListener('dragend', function (e) {
+                if (e.target.classList.contains('task-card')) {
+                    setTimeout(() => {
+                        e.target.style.opacity = '1';
+                        draggedTask = null;
+                    }, 0);
+                }
+            });
+
+            document.querySelectorAll('.task-list').forEach(column => {
+                column.addEventListener('dragover', function (e) {
+                    e.preventDefault();
+                });
+
+                column.addEventListener('dragenter', function (e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = 'rgba(139, 95, 191, 0.1)';
+                });
+
+                column.addEventListener('dragleave', function () {
+                    this.style.backgroundColor = '';
+                });
+
+                column.addEventListener('drop', function (e) {
+                    e.preventDefault();
+                    this.style.backgroundColor = '';
+                    if (draggedTask) {
+                        this.appendChild(draggedTask);
+
+                        // Update task status in data
+                        const taskId = parseInt(draggedTask.dataset.taskId);
+                        const task = tasks.find(t => t.id === taskId);
+                        if (task) {
+                            const newStatus = this.id.replace('-column', '');
+                            task.status = newStatus;
+
+                            // Update task counts
+                            renderTasks();
+
+                            // Show notification
+                            const columnTitle = this.closest('.board-column').querySelector('.column-title').textContent;
+                            console.log(`Tarefa #T-${taskId.toString().padStart(3, '0')} movida para ${columnTitle}`);
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyro Gamificação - Perfil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/style/pyroperfilH.css">
+
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Meu Perfil</h1>
+            </div>
+            <div class="header-right">
+                <div class="user-profile">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-info">
+                        <div class="user-name">João Silva</div>
+                        <div class="user-role">Nível 15</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../assets/img/pyro.png" alt="Pyro" class="logo-img">
+                </div>
+                <div class="logo-text">
+                    <h2>Pyro Gamificação</h2>
+                    <p>Planejamento de Sprint</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="pyrolobbyH.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Painel Principal</span>
+                </a>
+
+                <a href="pyroscrum.html" class="nav-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Planejamento de Sprint</span>
+                </a>
+
+                <a href="pyroperfilH.html" class="nav-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Perfil e Conquistas</span>
+                </a>
+
+                <a href="pyronotificacaoH.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Notificação</span>
+                </a>
+            </nav>
+
+            <a href="pyroconfig.html" class="pyro">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <div class="page-header">
+            
+            </div>
+
+            <!-- Profile Section -->
+            <div class="profile-section">
+                <!-- Profile Card -->
+                <div class="profile-card">
+                    <div class="profile-avatar">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <div class="profile-info">
+                        <h2 class="profile-name">João "Rocket" Silva</h2>
+                        <p class="profile-role">Desenvolvedor Sênior</p>
+                        <div class="level-badge">Nível 15 - Mestre Scrum</div>
+                        
+                        <div class="xp-progress">
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div class="progress-text">
+                                <span>1,250/2,000 XP</span>
+                                <span>75%</span>
+                            </div>
+                        </div>
+
+                        <div class="profile-stats">
+                            <div class="stat-item">
+                                <div class="stat-value">85%</div>
+                                <div class="stat-label">Taxa de Conclusão</div>
+                            </div>
+                            <div class="stat-item">
+                                <div class="stat-value">42</div>
+                                <div class="stat-label">Tarefas Feitas</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Profile Content -->
+                <div class="profile-content">
+                    <!-- Customization Card -->
+                    <div class="customization-card">
+                        <div class="section-header">
+                            <h3 class="section-title">Personalização</h3>
+                        </div>
+                        
+                        <div class="customization-options">
+                            <div class="avatar-option active">
+                                <div class="avatar-preview" style="background: linear-gradient(135deg, #FF6B8B 0%, #4ECDC4 100%);">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <div class="avatar-name">Rocket</div>
+                            </div>
+                            <div class="avatar-option">
+                                <div class="avatar-preview" style="background: linear-gradient(135deg, #8B5FBF 0%, #FFD700 100%);">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="avatar-name">Rei</div>
+                            </div>
+                            <div class="avatar-option">
+                                <div class="avatar-preview" style="background: linear-gradient(135deg, #4ECDC4 0%, #45B7AF 100%);">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="avatar-name">Robô</div>
+                            </div>
+                            <div class="avatar-option">
+                                <div class="avatar-preview" style="background: linear-gradient(135deg, #FF6B8B 0%, #E84565 100%);">
+                                    <i class="fas fa-dragon"></i>
+                                </div>
+                                <div class="avatar-name">Dragão</div>
+                            </div>
+                        </div>
+
+                        <div class="nickname-form">
+                            <div class="form-group">
+                                <label for="nickname">Nickname</label>
+                                <input type="text" id="nickname" value="João 'Rocket' Silva" placeholder="Digite seu nickname">
+                            </div>
+                            <button class="btn btn-primary">
+                                <i class="fas fa-save"></i> Salvar Alterações
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Badges Card -->
+                    <div class="badges-card">
+                        <div class="section-header">
+                            <h3 class="section-title">Minhas Conquistas</h3>
+                            <span>12/25 desbloqueadas</span>
+                        </div>
+                        
+                        <div class="badges-grid">
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">
+                                    <i class="fas fa-star"></i>
+                                </div>
+                                <div class="badge-name">Iniciante</div>
+                                <div class="badge-xp">+100 XP</div>
+                            </div>
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="badge-name">Produtivo</div>
+                                <div class="badge-xp">+250 XP</div>
+                            </div>
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">
+                                    <i class="fas fa-code"></i>
+                                </div>
+                                <div class="badge-name">Desenvolvedor</div>
+                                <div class="badge-xp">+500 XP</div>
+                            </div>
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">
+                                    <i class="fas fa-check-double"></i>
+                                </div>
+                                <div class="badge-name">Concluído</div>
+                                <div class="badge-xp">+300 XP</div>
+                            </div>
+                            <div class="badge-item unlocked">
+                                <div class="badge-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="badge-name">Team Player</div>
+                                <div class="badge-xp">+400 XP</div>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-icon locked">
+                                    <i class="fas fa-crown"></i>
+                                </div>
+                                <div class="badge-name">Mestre</div>
+                                <div class="badge-xp">+1000 XP</div>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-icon locked">
+                                    <i class="fas fa-infinity"></i>
+                                </div>
+                                <div class="badge-name">Lendário</div>
+                                <div class="badge-xp">+2000 XP</div>
+                            </div>
+                            <div class="badge-item">
+                                <div class="badge-icon locked">
+                                    <i class="fas fa-gem"></i>
+                                </div>
+                                <div class="badge-name">Raro</div>
+                                <div class="badge-xp">+1500 XP</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Activities Card -->
+                    <div class="activities-card">
+                        <div class="section-header">
+                            <h3 class="section-title">Histórico de Atividades</h3>
+                        </div>
+                        
+                        <div class="activities-list">
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-tasks"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Tarefa Concluída</div>
+                                    <div class="activity-desc">Implementar sistema de autenticação</div>
+                                </div>
+                                <div class="activity-xp">+50 XP</div>
+                                <div class="activity-time">2h atrás</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-trophy"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Badge Desbloqueado</div>
+                                    <div class="activity-desc">Produtivo - 10 tarefas em um dia</div>
+                                </div>
+                                <div class="activity-xp">+250 XP</div>
+                                <div class="activity-time">1 dia atrás</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-level-up-alt"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Nível Alcançado</div>
+                                    <div class="activity-desc">Subiu para o nível 15</div>
+                                </div>
+                                <div class="activity-xp">+100 XP</div>
+                                <div class="activity-time">2 dias atrás</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Moedas Ganhas</div>
+                                    <div class="activity-desc">Completou sprint antecipadamente</div>
+                                </div>
+                                <div class="activity-xp">+75 XP</div>
+                                <div class="activity-time">3 dias atrás</div>
+                            </div>
+                            <div class="activity-item">
+                                <div class="activity-icon">
+                                    <i class="fas fa-users"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-title">Revisão de Código</div>
+                                    <div class="activity-desc">Revisou PR da equipe</div>
+                                </div>
+                                <div class="activity-xp">+30 XP</div>
+                                <div class="activity-time">4 dias atrás</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Stats Card -->
+                    <div class="stats-card">
+                        <div class="section-header">
+                            <h3 class="section-title">Estatísticas Detalhadas</h3>
+                        </div>
+                        
+                        <div class="stats-grid">
+                            <div class="stat-card">
+                                <div class="stat-card-icon">
+                                    <i class="fas fa-check-circle"></i>
+                                </div>
+                                <div class="stat-card-value">42</div>
+                                <div class="stat-card-label">Tarefas Concluídas</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="stat-card-value">85%</div>
+                                <div class="stat-card-label">Taxa de Sucesso</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-icon">
+                                    <i class="fas fa-clock"></i>
+                                </div>
+                                <div class="stat-card-value">92%</div>
+                                <div class="stat-card-label">Entregas no Prazo</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-icon">
+                                    <i class="fas fa-medal"></i>
+                                </div>
+                                <div class="stat-card-value">12</div>
+                                <div class="stat-card-label">Badges</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-icon">
+                                    <i class="fas fa-fire"></i>
+                                </div>
+                                <div class="stat-card-value">15</div>
+                                <div class="stat-card-label">Nível Atual</div>
+                            </div>
+                            <div class="stat-card">
+                                <div class="stat-card-icon">
+                                    <i class="fas fa-coins"></i>
+                                </div>
+                                <div class="stat-card-value">1,250</div>
+                                <div class="stat-card-label">XP Total</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Seleção de avatar
+            const avatarOptions = document.querySelectorAll('.avatar-option');
+            avatarOptions.forEach(option => {
+                option.addEventListener('click', function() {
+                    avatarOptions.forEach(opt => opt.classList.remove('active'));
+                    this.classList.add('active');
+                    
+                    // Atualizar avatar principal
+                    const mainAvatar = document.querySelector('.profile-avatar');
+                    const icon = this.querySelector('.avatar-preview i').className;
+                    mainAvatar.innerHTML = `<i class="${icon}"></i>`;
+                    
+                    // Simular salvamento
+                    console.log('Avatar alterado com sucesso!');
+                });
+            });
+
+            // Salvar nickname
+            const saveBtn = document.querySelector('.btn-primary');
+            const nicknameInput = document.getElementById('nickname');
+            
+            saveBtn.addEventListener('click', function() {
+                const newNickname = nicknameInput.value;
+                document.querySelector('.profile-name').textContent = newNickname;
+                
+                // Simular salvamento
+                alert('Perfil atualizado com sucesso!');
+                console.log('Nickname alterado para:', newNickname);
+            });
+
+            // Navegação na sidebar
+            const navItems = document.querySelectorAll('.nav-item');
+            navItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    navItems.forEach(nav => nav.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+
+            // Efeito hover nos badges desbloqueados
+            const unlockedBadges = document.querySelectorAll('.badge-item.unlocked');
+            unlockedBadges.forEach(badge => {
+                badge.addEventListener('mouseenter', function() {
+                    const icon = this.querySelector('.badge-icon');
+                    icon.style.transform = 'scale(1.1) rotate(5deg)';
+                });
+                
+                badge.addEventListener('mouseleave', function() {
+                    const icon = this.querySelector('.badge-icon');
+                    icon.style.transform = 'scale(1) rotate(0deg)';
+                });
+            });
+
+            // Simular ganho de XP ao clicar em atividades
+            const activityItems = document.querySelectorAll('.activity-item');
+            activityItems.forEach(activity => {
+                activity.addEventListener('click', function() {
+                    const xpGain = this.querySelector('.activity-xp').textContent;
+                    alert(`Você ganhou ${xpGain} por esta atividade!`);
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+<script src="pyroMain.js"></script>

@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyro Gamificação - Login</title>
+    <link rel="stylesheet" href="../assets/style/pyrologin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="left-panel">
+            <h1>Bem-vindo ao Pyro Gamificação</h1>
+            <p>Acesse suas tarefas, veja seu progresso e participe das atividades do seu time. Faça login para continuar sua jornada educacional.</p>
+        </div>
+        <div class="right-panel">
+            <div class="logo">
+                <div class="logo-icon">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+                <div class="logo-text">
+                    <h2>Pyro Gamificação</h2>
+                    <p>Faça login na sua conta e comece seu planejamento de sprint</p>
+                </div>
+            </div>
+   
+                <div class="form-group">
+                    <label for="loginField" id="loginLabel">RA</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="loginField" placeholder="Digite seu RA" required>
+                    </div>
+                    <div class="error-message" id="loginError"></div>
+                </div>
+                
+                <div class="form-group">
+                    <label for="password">Senha</label>
+                    <div class="input-with-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" placeholder="Digite sua senha" required>
+                    </div>
+                    <div class="error-message" id="passwordError"></div>
+                </div>
+                
+                <div class="login-options">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Lembrar-me</label>
+                    </div>
+                    <a href="#" class="forgot-password" id="forgotPassword">Esqueci minha senha</a>
+                </div>
+                
+                <a href="pyrolobbyH.html">
+                <button type="submit" class="btn">Entrar</button>
+                </a>
+          
+            
+            <div class="switch-login">
+                <p>Prefere usar e-mail? <a href="#" id="switchLogin">Fazer login com e-mail</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal para recuperação de senha -->
+    <div class="modal" id="passwordModal">
+        <div class="modal-content">
+            <span class="close-modal" id="closeModal">&times;</span>
+            <h3>Recuperar Senha</h3>
+            <p>Digite seu RA ou e-mail para receber instruções de recuperação:</p>
+            <div class="form-group">
+                <div class="input-with-icon">
+                    <i class="fas fa-envelope"></i>
+                    <input type="text" id="recoveryField" placeholder="RA ou e-mail">
+                </div>
+                <div class="error-message" id="recoveryError"></div>
+            </div>
+            <button class="btn" id="sendRecovery">Enviar instruções</button>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginForm = document.getElementById('loginForm');
+            const loginField = document.getElementById('loginField');
+            const loginLabel = document.getElementById('loginLabel');
+            const passwordField = document.getElementById('password');
+            const loginError = document.getElementById('loginError');
+            const passwordError = document.getElementById('passwordError');
+            const switchLogin = document.getElementById('switchLogin');
+            const forgotPassword = document.getElementById('forgotPassword');
+            const passwordModal = document.getElementById('passwordModal');
+            const closeModal = document.getElementById('closeModal');
+            const sendRecovery = document.getElementById('sendRecovery');
+            const recoveryField = document.getElementById('recoveryField');
+            const recoveryError = document.getElementById('recoveryError');
+            
+            let isEmailLogin = false;
+            
+            // Alternar entre RA e e-mail
+            switchLogin.addEventListener('click', function(e) {
+                e.preventDefault();
+                isEmailLogin = !isEmailLogin;
+                
+                if (isEmailLogin) {
+                    loginLabel.textContent = 'E-mail';
+                    loginField.placeholder = 'Digite seu e-mail';
+                    switchLogin.textContent = 'Fazer login com RA';
+                } else {
+                    loginLabel.textContent = 'RA';
+                    loginField.placeholder = 'Digite seu RA';
+                    switchLogin.textContent = 'Fazer login com e-mail';
+                }
+            });
+            
+            // Validação do formulário de login
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                let isValid = true;
+                
+                // Limpar mensagens de erro
+                loginError.style.display = 'none';
+                passwordError.style.display = 'none';
+                
+                // Validar campo de login
+                if (!loginField.value.trim()) {
+                    loginError.textContent = isEmailLogin ? 'E-mail é obrigatório' : 'RA é obrigatório';
+                    loginError.style.display = 'block';
+                    isValid = false;
+                } else if (isEmailLogin && !isValidEmail(loginField.value)) {
+                    loginError.textContent = 'Formato de e-mail inválido';
+                    loginError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Validar senha
+                if (!passwordField.value) {
+                    passwordError.textContent = 'Senha é obrigatória';
+                    passwordError.style.display = 'block';
+                    isValid = false;
+                }
+                
+                // Se válido, simular envio
+                if (isValid) {
+                    // Simulação de login bem-sucedido
+                    alert('Login realizado com sucesso! Redirecionando...');
+                    // Em um sistema real, aqui seria feita a autenticação com o backend
+                }
+            });
+            
+            // Abrir modal de recuperação de senha
+            forgotPassword.addEventListener('click', function(e) {
+                e.preventDefault();
+                passwordModal.style.display = 'flex';
+            });
+            
+            // Fechar modal
+            closeModal.addEventListener('click', function() {
+                passwordModal.style.display = 'none';
+            });
+            
+            // Fechar modal ao clicar fora dele
+            window.addEventListener('click', function(e) {
+                if (e.target === passwordModal) {
+                    passwordModal.style.display = 'none';
+                }
+            });
+            
+            // Enviar recuperação de senha
+            sendRecovery.addEventListener('click', function() {
+                recoveryError.style.display = 'none';
+                
+                if (!recoveryField.value.trim()) {
+                    recoveryError.textContent = 'Campo obrigatório';
+                    recoveryError.style.display = 'block';
+                    return;
+                }
+                
+                // Simulação de envio de recuperação
+                alert('Instruções de recuperação enviadas para o e-mail cadastrado!');
+                passwordModal.style.display = 'none';
+                recoveryField.value = '';
+            });
+            
+            // Função auxiliar para validar e-mail
+            function isValidEmail(email) {
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                return emailRegex.test(email);
+            }
+        });
+    </script>
+</body>
+</html>
+<script src="pyroMain.js"></script>

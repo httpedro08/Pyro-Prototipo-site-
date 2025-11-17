@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyro Gamificação - Notificações</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../assets/style/pyronotificacao.css">
+
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-left">
+                <h1>Notificações</h1>
+            </div>
+            <div class="header-right">
+                <div class="notification-bell" id="notificationBell">
+                    <i class="fas fa-bell"></i>
+                    <div class="notification-count">5</div>
+                </div>
+                <a href="pyroperfilH.html" class="user-profile" style="text-decoration: none; cursor: pointer;">
+                    <div class="user-avatar">JS</div>
+                    <div class="user-info">
+                        <div class="user-name">João Silva</div>
+                        <div class="user-role">Desenvolvedor</div>
+                    </div>
+                </a>
+            </div>
+        </header>
+
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <div class="logo-icon">
+                    <img src="../assets/img/pyro.png" alt="Pyro" class="logo-img">
+                </div>
+                <div class="logo-text">
+                    <h2>Pyro Gamificação</h2>
+                    <p>Planejamento de Sprint</p>
+                </div>
+            </div>
+
+            <nav class="nav-menu">
+                <a href="pyrolobbyH.html" class="nav-item active">
+                    <i class="fas fa-home"></i>
+                    <span>Painel Principal</span>
+                </a>
+
+                <a href="pyroscrum.html" class="nav-item">
+                    <i class="fas fa-tasks"></i>
+                    <span>Planejamento de Sprint</span>
+                </a>
+
+                <a href="pyroperfilH.html" class="nav-item">
+                    <i class="fas fa-trophy"></i>
+                    <span>Perfil e Conquistas</span>
+                </a>
+
+                <a href="pyronotificacaoH.html" class="nav-item">
+                    <i class="fas fa-users"></i>
+                    <span>Notificação</span>
+                </a>
+            </nav>
+
+            <a href="pyroconfig.html" class="pyro">
+                <i class="fas fa-cog"></i>
+                <span>Configurações</span>
+            </a>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Page Header -->
+            <div class="page-header">
+                <h2 class="page-title">Central de Notificações</h2>
+                <div class="page-actions">
+                    <button class="btn btn-secondary" id="markAllRead">
+                        <i class="fas fa-check-double"></i> Marcar Todas como Lidas
+                    </button>
+            </div>
+            </div>
+
+            <!-- Notifications Panel -->
+            <div class="notifications-panel">
+                <!-- Notifications List -->
+                <div class="notifications-list">
+                    <div class="section-header">
+                        <h3 class="section-title">Minhas Notificações</h3>
+                        <div class="filter-options">
+                            <div class="filter-option active">Todas</div>
+                            <div class="filter-option">Não Lidas</div>
+                            <div class="filter-option">Mensagens</div>
+                        </div>
+                    </div>
+                    
+                    <div class="notifications-container">
+                        <!-- Urgent Notification -->
+                        <div class="notification-item unread urgent">
+                            <div class="notification-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">Prazo Próximo!</div>
+                                    <div class="notification-time">Há 15 min</div>
+                                </div>
+                                <div class="notification-message">
+                                    A tarefa "Implementar autenticação JWT" vence em 2 horas. Priorize esta atividade!
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+
+                        <!-- Task Update -->
+                        <div class="notification-item unread info">
+                            <div class="notification-icon">
+                                <i class="fas fa-tasks"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">Tarefa Atualizada</div>
+                                    <div class="notification-time">Há 1 hora</div>
+                                </div>
+                                <div class="notification-message">
+                                    A tarefa #T-107 foi movida para "Em Progresso" por Maria Andrade.
+                                </div>
+                               
+                                
+                            </div>
+                        </div>
+
+                        <!-- Scrum Master Message -->
+                        <div class="notification-item unread">
+                            <div class="notification-icon">
+                                <i class="fas fa-comment-alt"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">Mensagem do Scrum Master</div>
+                                    <div class="notification-time">Há 3 horas</div>
+                                </div>
+                                <div class="notification-message">
+                                    Ótimo trabalho na sprint passada! Sua produtividade aumentou 25%. Continue assim!
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+
+                        <!-- Achievement Unlocked -->
+                        <div class="notification-item success">
+                            <div class="notification-icon">
+                                <i class="fas fa-trophy"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">Conquista Desbloqueada!</div>
+                                    <div class="notification-time">Ontem</div>
+                                </div>
+                                <div class="notification-message">
+                                    Você desbloqueou o badge "Produtivo" por completar 10 tarefas em um dia. +250 XP!
+                                </div>
+                                
+                            </div>
+                        </div>
+
+                        <!-- Daily Meeting Reminder -->
+                        <div class="notification-item warning">
+                            <div class="notification-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">Lembrete: Daily Meeting</div>
+                                    <div class="notification-time">Ontem</div>
+                                </div>
+                                <div class="notification-message">
+                                    Daily meeting em 30 minutos. Prepare seu status: O que fez, o que fará e impedimentos.
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+
+                        <!-- Code Review -->
+                        <div class="notification-item info">
+                            <div class="notification-icon">
+                                <i class="fas fa-code"></i>
+                            </div>
+                            <div class="notification-content">
+                                <div class="notification-header">
+                                    <div class="notification-title">Revisão de Código Solicitada</div>
+                                    <div class="notification-time">2 dias atrás</div>
+                                </div>
+                                <div class="notification-message">
+                                    Solicitamos sua revisão no PR #45 - "Implementação do módulo de usuários".
+                                </div>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Quick Actions Panel -->
+                <div class="quick-actions">
+                    <!-- Settings Card -->
+                    <div class="settings-card">
+                        <div class="section-header">
+                            <h3 class="section-title">Configurações de Notificação</h3>
+                        </div>
+                        
+                        <div class="settings-list">
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Notificações por Email</h4>
+                                    <p>Receba notificações importantes por email</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Notificações Sonoras</h4>
+                                    <p>Reproduzir som para novas notificações</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Notificações de Prazo</h4>
+                                    <p>Alertas sobre prazos próximos</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Mensagens da Equipe</h4>
+                                    <p>Notificações de mensagens dos colegas</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                            
+                            <div class="setting-item">
+                                <div class="setting-info">
+                                    <h4>Atualizações de Tarefas</h4>
+                                    <p>Alertas sobre mudanças nas tarefas</p>
+                                </div>
+                                <label class="toggle-switch">
+                                    <input type="checkbox">
+                                    <span class="slider"></span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Messages Card -->
+                    <div class="messages-card">
+                        <div class="section-header">
+                            <h3 class="section-title">Mensagens Recentes</h3>
+                        </div>
+                        
+                        <div class="messages-list">
+                            <div class="message-item">
+                                <div class="message-avatar">AC</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <div class="message-sender">Ana Costa</div>
+                                        <div class="message-time">10:30</div>
+                                    </div>
+                                    <div class="message-preview">
+                                        João, poderia revisar meu PR quando tiver um tempo?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="message-item">
+                                <div class="message-avatar">PS</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <div class="message-sender">Pedro Santos</div>
+                                        <div class="message-time">Ontem</div>
+                                    </div>
+                                    <div class="message-preview">
+                                        Encontrei um bug no módulo de autenticação, vamos conversar?
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="message-item">
+                                <div class="message-avatar">SM</div>
+                                <div class="message-content">
+                                    <div class="message-header">
+                                        <div class="message-sender">Scrum Master</div>
+                                        <div class="message-time">2 dias</div>
+                                    </div>
+                                    <div class="message-preview">
+                                        Excelente trabalho na sprint! Suas métricas melhoraram muito.
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Notification Popup -->
+    <div class="notification-popup" id="notificationPopup">
+        <div class="popup-icon">
+            <i class="fas fa-bell"></i>
+        </div>
+        <div class="popup-content">
+            <div class="popup-title" id="popupTitle">Nova Notificação</div>
+            <div class="popup-message" id="popupMessage">Você tem uma nova mensagem do Scrum Master</div>
+        </div>
+        <div class="close-popup" id="closePopup">
+            <i class="fas fa-times"></i>
+        </div>
+    </div>
+    <script src="pyroMain.js"></script>
